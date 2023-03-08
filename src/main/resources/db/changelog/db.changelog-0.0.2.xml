@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="CREATE TABLE requerimento_de_acesso" author="wagner">
+
+        <createTable tableName="requerimento_de_acesso">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="nome_do_chefe_imediato" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cargo_do_chefe_imediato" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_coordenador_da_gestao_de_pessoas" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome_coordenador_da_ti" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="servidor" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_requerimento_de_acesso_has_servidor"
+                             references="servidor(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
