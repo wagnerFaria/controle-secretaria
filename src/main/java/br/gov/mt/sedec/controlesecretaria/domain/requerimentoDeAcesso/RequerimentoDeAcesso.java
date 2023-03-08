@@ -1,7 +1,6 @@
 package br.gov.mt.sedec.controlesecretaria.domain.requerimentoDeAcesso;
 
 import br.gov.mt.sedec.controlesecretaria.domain.acesso.Acesso;
-import br.gov.mt.sedec.controlesecretaria.domain.acesso.AcessoDtoIncluir;
 import br.gov.mt.sedec.controlesecretaria.domain.servidor.Servidor;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
