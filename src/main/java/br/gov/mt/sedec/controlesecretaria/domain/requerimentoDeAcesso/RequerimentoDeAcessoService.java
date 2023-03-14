@@ -8,6 +8,8 @@ import br.gov.mt.sedec.controlesecretaria.domain.servidor.Servidor;
 import br.gov.mt.sedec.controlesecretaria.domain.servidor.ServidorDtoDetalhar;
 import br.gov.mt.sedec.controlesecretaria.domain.servidor.ServidorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
@@ -67,5 +69,8 @@ public class RequerimentoDeAcessoService {
         return requerimentoDeAcessoRepository.findById(id)
                 .orElseThrow(() -> new HttpStatusCodeException(HttpStatus.BAD_REQUEST, "Requerimento com id: " + id + " não encontrado") {
                 });
+    }
+    public Page<RequerimentoDeAcesso> findAll(Pageable page) {
+        return requerimentoDeAcessoRepository.findAll(page);
     }
 }

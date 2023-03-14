@@ -1,6 +1,7 @@
 package br.gov.mt.sedec.controlesecretaria.domain.acesso;
 
 import br.gov.mt.sedec.controlesecretaria.domain.requerimentoDeAcesso.RequerimentoDeAcesso;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ public class Acesso {
 
     @ManyToOne()
     @JoinColumn(name = "requerimento_de_acesso", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private RequerimentoDeAcesso requerimentoDeAcesso;
 
 }

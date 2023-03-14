@@ -1,6 +1,7 @@
 package br.gov.mt.sedec.controlesecretaria.domain.servidor;
 
 import br.gov.mt.sedec.controlesecretaria.domain.requerimentoDeAcesso.RequerimentoDeAcesso;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -44,6 +45,7 @@ public class Servidor {
     private String telefone;
 
     @OneToMany(mappedBy = "servidor")
+    @JsonIgnore
     private List<RequerimentoDeAcesso> requerimentoDeAcessoList;
 
     public Servidor(ServidorDtoIncluir servidor) {
