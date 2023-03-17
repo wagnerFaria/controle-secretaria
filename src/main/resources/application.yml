@@ -1,6 +1,8 @@
 logging:
   level:
     liquibase: INFO
+server:
+  port: ${SERVER_PORT:8080}
 spring:
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
@@ -21,3 +23,4 @@ spring:
     console:
       enabled: true
       path: /h2-console
+mySecret: 123456

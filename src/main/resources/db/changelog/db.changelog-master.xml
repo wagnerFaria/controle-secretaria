@@ -7,4 +7,5 @@
     <include file="db/changelog/db.changelog-0.0.1.xml"/>  <!-- create table servidor -->
     <include file="db/changelog/db.changelog-0.0.2.xml"/>  <!-- create table requerimento_de_acesso -->
     <include file="db/changelog/db.changelog-0.0.3.xml"/>  <!-- create table acesso -->
+    <include file="db/changelog/db.changelog-0.0.4.xml"/>  <!-- create table my_user, my_role and user_has_roles -->
 </databaseChangeLog>

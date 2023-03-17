@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="CREATE TABLE my_role" author="wagner">
+        <createTable tableName="my_role">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="CREATE TABLE my_user" author="wagner">
+        <createTable tableName="my_user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="CREATE TABLE user_has_roles" author="wagner">
+        <createTable tableName="user_has_roles">
+            <column name="my_user_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"
+                             foreignKeyName="fk_user_has_roles_my_user"
+                             references="my_user(id)"/>
+            </column>
+            <column name="my_role_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"
+                             foreignKeyName="fk_user_has_roles_my_role"
+                             references="my_role(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="INSERT DEFAULT ROLES INTO TABLE my_role" author="wagner">
+        <insert tableName="my_role">
+            <column name="name" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="my_role">
+            <column name="name" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
